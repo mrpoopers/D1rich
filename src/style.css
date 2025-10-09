@@ -14,7 +14,7 @@ body {
 }
 
 .image-container {
-  position: relative;  /* for counter overlay */
+  position: relative; /* for counter overlay */
 }
 
 .icon {
@@ -30,7 +30,7 @@ body {
 }
 
 .counter {
-  position: absolute;  /* overlay on image */
+  position: absolute; /* overlay on image */
   top: -55px;
   left: 50%;
   transform: translateX(-50%);

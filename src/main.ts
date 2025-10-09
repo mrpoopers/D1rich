@@ -11,11 +11,11 @@ document.body.innerHTML = `
   </div>
 `;
 
-const image = document.getElementById('clickable-image');
-const countDisplay = document.getElementById('click-count');
+const image = document.getElementById("clickable-image");
+const countDisplay = document.getElementById("click-count");
 
 if (image && countDisplay) {
-  image.addEventListener('click', () => {
+  image.addEventListener("click", () => {
     clickCount++;
     countDisplay.textContent = clickCount.toString();
     console.log("Image clicked", clickCount);
