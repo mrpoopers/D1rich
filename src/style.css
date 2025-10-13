@@ -1,32 +1,37 @@
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center; /* vertically center */
+  align-items: flex-start; /* align items to the left */
+  justify-content: center;
   height: 100vh;
   margin: 0;
+  padding-left: 30px; /* shifts everything slightly to the left */
   font-family: sans-serif;
   background: #f0f0f0;
 }
 
 .title {
+  margin-top: -200px;
   margin-bottom: 60px;
+  text-align: center;
+  width: 100%;
+  height: auto;
 }
 
 .image-container {
-  position: relative; /* for counter overlay */
+  position: relative;
 }
 
 .icon {
-  width: 200px;
+  width: 400px;
   height: auto;
-  border: 2px solid salmon;
   cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.3s; /* smooth hover effects */
+  transition: transform 0.1s, filter 0.2s;
 }
 
 .icon:hover {
-  transform: scale(1.03); /* enlarges on hover */
+  transform: scale(1.04); /* enlarges on hover */
+  filter: drop-shadow(0 0 0 rgb(234, 221, 49));
 }
 
 .counter {
@@ -58,6 +63,28 @@ body {
 
 .cps-display {
   margin: 15px 0;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: bold;
+}
+
+.upgrade-btn {
+  background-color: #ffeb3b; /* bright yellow */
+  color: #333; /* dark text for contrast */
+  border: 2px solid #fbc02d; /* slightly darker yellow border */
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.upgrade-btn:hover {
+  background-color: #fff176;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.upgrade-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
