@@ -34,6 +34,10 @@ body {
   filter: drop-shadow(0 0 0 rgb(234, 221, 49));
 }
 
+.icon.clicked {
+  transform: scale(1.2); /* slightly bigger */
+  transition: transform 0.1s; /* quick pop effect */
+}
 .counter {
   position: absolute; /* overlay on image */
   top: -50px;
