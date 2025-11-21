@@ -86,11 +86,18 @@ if (upgradesContainer) {
     const div = document.createElement("div");
     div.classList.add("upgrade-row");
     div.innerHTML = `
-      <span class="owned" id="owned-${index}">${item.level}</span>
-      <button id="upgrade-${index}" class="upgrade-btn" data-description="${item.description}">
-        ${item.name} (+${item.rate} bananas/sec) — Cost: ${item.cost}
-      </button>
-    `;
+  <span class="owned" id="owned-${index}">
+    ${item.level}
+  </span>
+
+  <button
+    id="upgrade-${index}"
+    class="upgrade-btn"
+    data-description="${item.description}"
+  >
+    ${item.name} (+${item.rate} bananas/sec) — Cost: ${item.cost}
+  </button>
+`;
 
     upgradesContainer.appendChild(div);
   });
