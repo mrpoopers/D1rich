@@ -97,6 +97,8 @@ if (upgradesContainer) {
 }
 
 // ===== Utility Functions =====
+
+// shows a temporary on-screen message
 function _showMessage(text: string, duration = 1200) {
   if (!messageBox) return;
   messageBox.textContent = text;
@@ -104,10 +106,12 @@ function _showMessage(text: string, duration = 1200) {
   setTimeout(() => (messageBox.style.opacity = "0"), duration);
 }
 
+//Updates the UI element that displays bananas per second
 function updateBananasPerDisplay() {
   if (cpsDisplay) cpsDisplay.textContent = bananasPer.toFixed(1);
 }
 
+//Updates the UI element that displays how many upgrades you have
 function updateCountDisplay() {
   if (countDisplay) countDisplay.textContent = clickCount.toFixed(1);
 }
