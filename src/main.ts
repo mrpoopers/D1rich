@@ -3,7 +3,7 @@ import singlebanana from "./singlebanana.png";
 import "./style.css";
 
 let clickCount = 0;
-let bananasPer = 1;
+let bananasPerSecond = 1;
 
 interface Item {
   name: string;
@@ -14,7 +14,7 @@ interface Item {
   description?: string;
 }
 
-const availableItems: Item[] = [
+const UpgradeItems: Item[] = [
   {
     name: "Banana Man",
     cost: 10,
@@ -82,7 +82,7 @@ const upgradesContainer = document.getElementById("upgrades-container");
 
 // ===== Upgrade Buttons =====
 if (upgradesContainer) {
-  availableItems.forEach((item, index) => {
+  UpgradeItems.forEach((item, index) => {
     const div = document.createElement("div");
     div.classList.add("upgrade-row");
     div.innerHTML = `
@@ -108,7 +108,7 @@ function _showMessage(text: string, duration = 1200) {
 
 //Updates the UI element that displays bananas per second
 function updateBananasPerDisplay() {
-  if (cpsDisplay) cpsDisplay.textContent = bananasPer.toFixed(1);
+  if (cpsDisplay) cpsDisplay.textContent = bananasPerSecond.toFixed(1);
 }
 
 //Updates the UI element that displays how many upgrades you have
@@ -146,12 +146,12 @@ if (image) {
 
 // ===== Auto Bananas =====
 setInterval(() => {
-  clickCount += bananasPer;
+  clickCount += bananasPerSecond;
   updateCountDisplay();
 }, 1000);
 
 // ===== Event Listeners for Upgrades =====
-availableItems.forEach((item, index) => {
+UpgradeItems.forEach((item, index) => {
   const button = document.getElementById(`upgrade-${index}`);
   const ownedDisplay = document.getElementById(`owned-${index}`);
   const message = document.getElementById("message");
@@ -164,7 +164,7 @@ availableItems.forEach((item, index) => {
       if (clickCount >= item.cost) {
         clickCount -= item.cost;
         item.level++;
-        bananasPer += item.rate;
+        bananasPerSecond += item.rate;
         item.cost = Math.floor(item.cost * item.costMultiplier);
 
         if (ownedDisplay) ownedDisplay.textContent = item.level.toString();
