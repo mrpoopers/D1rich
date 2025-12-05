@@ -1,4 +1,5 @@
 /* ===== Body & Layout ===== */
+
 body {
   display: flex;
   flex-direction: column;
@@ -17,6 +18,7 @@ body {
   text-align: center;
   width: 100%;
   height: auto;
+  color: white;
 }
 
 .image-container {
@@ -80,6 +82,7 @@ body {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
 }
 
 #upgrades-container {
@@ -108,7 +111,7 @@ body {
   text-align: right;
   margin-right: 10px;
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
 }
 
 .upgrade-btn {
@@ -125,12 +128,12 @@ body {
 .upgrade-btn:hover {
   background-color: #fff176;
   transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .upgrade-btn:active {
   transform: scale(0.98);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
 }
 
 .cps-display {
@@ -157,4 +160,47 @@ body {
     opacity: 0;
     transform: translateY(-150px) scale(0.8);
   }
+}
+.mascot {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 150px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  /* optional fallback */
+  background: #f0f0f0;
+
+  position: relative;
+}
+
+/* Background image behind EVERYTHING */
+body::before {
+  content: "";
+  position: fixed; /* stays still behind your UI */
+  inset: 0; /* covers entire screen */
+  background-image: var(--farm-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1; /* forces it behind your entire DOM */
+  opacity: 1; /* make 0.2 for faint watermark */
+  pointer-events: none; /* makes sure it doesn’t block clicks */
+}
+
+#banana-bottom-bar {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+  font-size: 30px;
 }

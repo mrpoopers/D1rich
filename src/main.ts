@@ -1,8 +1,12 @@
 import banana from "./banana.png";
 import singlebanana from "./singlebanana.png";
+import bananamascot from "./bananamascot.png";
+import background from "./farmbackround.jpg";
 import "./style.css";
 
-let clickCount = 0;
+document.body.style.setProperty("--farm-bg", `url(${background})`);
+
+let clickCount = 300000000000;
 let bananasPerSecond = 1;
 
 interface Item {
@@ -60,6 +64,7 @@ const UpgradeItems: Item[] = [
 // === Base Layout ===
 document.body.innerHTML = `
   <h1 class="title">Banana Game</h1>
+  <img src="${bananamascot}" alt="A banana" class="mascot">
   </div>
   <div class="image-container">
     <img src="${banana}" class="icon" id="clickable-image" />
@@ -71,6 +76,7 @@ document.body.innerHTML = `
     <div id="message" class="message"></div>
   </div>
   <p class="cps-display">Bananas per second: <span id="cps-display">1.0</span></p>
+  <div id="banana-bottom-bar"></div>
 `;
 
 // ===== References =====
@@ -123,6 +129,22 @@ function updateCountDisplay() {
   if (countDisplay) countDisplay.textContent = clickCount.toFixed(1);
 }
 
+function spawnBottomBanana() {
+  const bar = document.getElementById("banana-bottom-bar");
+  if (!bar) return;
+
+  const emoji = document.createElement("span");
+  emoji.textContent = "🍌";
+  emoji.style.opacity = "0";
+  emoji.style.transition = "opacity 0.4s ease";
+
+  bar.appendChild(emoji);
+
+  requestAnimationFrame(() => {
+    emoji.style.opacity = "1";
+  });
+}
+
 // ===== Manual Clicks =====
 if (image) {
   image.addEventListener("click", () => {
@@ -173,6 +195,7 @@ UpgradeItems.forEach((item, index) => {
         item.level++;
         bananasPerSecond += item.rate;
         item.cost = Math.floor(item.cost * item.costMultiplier);
+        spawnBottomBanana();
 
         if (ownedDisplay) ownedDisplay.textContent = item.level.toString();
         updateCountDisplay();
